@@ -1,0 +1,4 @@
+{
+  "/page": "app/page.js",
+  "/candidates-dashboard/cv-manager/page": "app/candidates-dashboard/cv-manager/page.js"
+}
