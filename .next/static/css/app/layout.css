@@ -28420,6 +28420,10 @@ input:checked + .slider:before {
   color: #fff;
 }
 
+button:disabled {
+  cursor: not-allowed !important;
+}
+
 /*==========================
 typography
 ============================*/
@@ -33361,10 +33365,9 @@ Main Header
 
 .main-header .upload-cv {
   position: relative;
-  font-size: 16px;
-  /* color: var(--primary-color); */
-  color: white;
-  font-weight: 700;
+  font-size: 15px;
+  color: var(--primary-color);
+  font-weight: 400;
   white-space: nowrap;
 }
 

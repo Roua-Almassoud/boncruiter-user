@@ -1,4 +1,6 @@
 {
   "/page": "app/page.js",
-  "/candidates-dashboard/cv-manager/page": "app/candidates-dashboard/cv-manager/page.js"
+  "/(others)/register/page": "app/(others)/register/page.js",
+  "/employers-dashboard/post-jobs/page": "app/employers-dashboard/post-jobs/page.js",
+  "/not-found": "app/not-found.js"
 }

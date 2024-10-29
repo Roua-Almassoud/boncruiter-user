@@ -49,7 +49,7 @@ export default function RootLayout({ children }) {
             {/* Toastify */}
             <ToastContainer
               position="bottom-right"
-              autoClose={500}
+              autoClose={2000}
               hideProgressBar={false}
               newestOnTop={false}
               closeOnClick

@@ -10,6 +10,8 @@ import Testimonial from '../testimonial/Testimonial';
 import LoginRegBanner from '../block/LoginRegBanner';
 import LoginPopup from '../common/form/login/LoginPopup';
 import MobileMenu from '../header/MobileMenu';
+import CvUploadPopup from '../cv-manager/components/CvUploadPopup';
+
 
 const index = () => {
   return (
@@ -19,6 +21,7 @@ const index = () => {
 
       <DefaulHeader2 />
       {/* <!--End Main Header --> */}
+      <CvUploadPopup />
 
       <MobileMenu />
       {/* End MobileMenu */}

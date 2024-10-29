@@ -24,9 +24,8 @@ const DefaulHeader2 = () => {
   return (
     // <!-- Main Header-->
     <header
-      className={`main-header  ${
-        navbar ? "fixed-header animated slideInDown" : ""
-      }`}
+      className={`main-header  ${navbar ? "fixed-header animated slideInDown" : ""
+        }`}
     >
       {/* <!-- Main box --> */}
       <div className="main-box">
@@ -53,11 +52,20 @@ const DefaulHeader2 = () => {
 
         <div className="outer-box">
           {/* <!-- Add Listing --> */}
-          <Link href="/candidates-dashboard/cv-manager" className="upload-cv">
+          {/* <Link href="/cv-manager" className="upload-cv">
             Upload your CV
-          </Link>
+          </Link> */}
+
           {/* <!-- Login/Register --> */}
           <div className="btn-box">
+            <a
+              href="#"
+              className="theme-btn btn-style-three call-modal"
+              data-bs-toggle="modal"
+              data-bs-target="#uploadCVModal"
+            >
+              Upload your CV
+            </a>
             <a
               href="#"
               className="theme-btn btn-style-three call-modal"

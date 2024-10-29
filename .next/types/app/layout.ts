@@ -1,4 +1,4 @@
-// File: /Users/roaa/Desktop/boncruiter-user/app/layout.js
+// File: /media/rezk/WORK/My Projects/Next.js/bonCruter/boncruiter-user/app/layout.js
 import * as entry from '../../../app/layout.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

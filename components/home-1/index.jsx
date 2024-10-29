@@ -4,6 +4,7 @@ import AppSection from "../app-section/AppSection";
 import Blog from "../blog/Blog";
 import CallToAction from "../call-to-action/CallToAction";
 import LoginPopup from "../common/form/login/LoginPopup";
+import CvUploadPopup from "../cv-manager/components/CvUploadPopup";
 import Partner from "../common/partner/Partner";
 import FooterDefault from "../footer/common-footer";
 import Funfact from "../fun-fact-counter/Funfact";
@@ -19,6 +20,7 @@ const index = () => {
     <>
       <LoginPopup />
       {/* End Login Popup Modal */}
+      <CvUploadPopup />
 
       <DefaulHeader2 />
       {/* End Header with upload cv btn */}

@@ -16,11 +16,15 @@
       "static/chunks/main-app.js",
       "static/chunks/app/not-found.js"
     ],
-    "/candidates-dashboard/cv-manager/page": [
+    "/(others)/register/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/css/app/candidates-dashboard/cv-manager/page.css",
-      "static/chunks/app/candidates-dashboard/cv-manager/page.js"
+      "static/chunks/app/(others)/register/page.js"
+    ],
+    "/employers-dashboard/post-jobs/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/employers-dashboard/post-jobs/page.js"
     ]
   }
 }
