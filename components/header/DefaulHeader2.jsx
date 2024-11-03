@@ -58,14 +58,14 @@ const DefaulHeader2 = () => {
 
           {/* <!-- Login/Register --> */}
           <div className="btn-box">
-            <a
+            {/* <a
               href="#"
               className="theme-btn btn-style-three call-modal"
               data-bs-toggle="modal"
               data-bs-target="#uploadCVModal"
             >
               Upload your CV
-            </a>
+            </a> */}
             <a
               href="#"
               className="theme-btn btn-style-three call-modal"

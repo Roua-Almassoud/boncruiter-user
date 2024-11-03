@@ -12,18 +12,47 @@ const CvUploader = () => {
     const [loading, setLoading] = useState(false);
     const router = useRouter()
 
+    // validation chaching
+    function checkFileTypes(file) {
+        const allowedTypes = [
+            "application/pdf"
+        ];
+        if (!allowedTypes.includes(file.type)) {
+            return false;
+        }
+        return true;
+    }
 
     const cvManagerHandler = (e) => {
         const file = e.target.files[0]
         setError("")
         setCV(file)
     }
+
+    const handleDrop = (event) => {
+        event.preventDefault();
+        setError("");
+        setCV(null)
+
+        const droppedFile = event.dataTransfer.files[0];
+        console.log(droppedFile);
+
+        if (droppedFile) {
+            if (checkFileTypes(droppedFile)) {
+                setCV(droppedFile)
+            }
+            else {
+                setError("Only accept  (.pdf) file");
+            }
+        }
+    };
+
     const handleSubmitCV = async () => {
 
         setLoading(true);
         let formData = new FormData();
         formData.append('file', cv);
-
+        setError("");
 
         const response = await Api.call(
             formData,
@@ -60,7 +89,10 @@ const CvUploader = () => {
     return (
         <>
             {/* Start Upload resule */}
-            <div className="uploading-resume">
+            <div className="uploading-resume"
+                onDrop={handleDrop}
+                onDragOver={(event) => event.preventDefault()}
+            >
                 <div className="uploadButton">
                     <input
                         className="uploadButton-input"
