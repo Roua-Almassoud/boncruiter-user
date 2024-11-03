@@ -1,10 +1,10 @@
-import Link from "next/link";
-import LoginWithSocial from "./LoginWithSocial";
+import Link from 'next/link';
+import LoginWithSocial from './LoginWithSocial';
 
 const FormContent2 = () => {
   return (
     <div className="form-inner">
-      <h3>Login to Superio</h3>
+      <h3>Login to Bonzuttner</h3>
 
       {/* <!--Login Form--> */}
       <form method="post">
@@ -58,11 +58,11 @@ const FormContent2 = () => {
           Don&apos;t have an account? <Link href="/register">Signup</Link>
         </div>
 
-        <div className="divider">
+        {/* <div className="divider">
           <span>or</span>
-        </div>
+        </div> */}
 
-        <LoginWithSocial />
+        {/* <LoginWithSocial /> */}
       </div>
       {/* End bottom-box LoginWithSocial */}
     </div>

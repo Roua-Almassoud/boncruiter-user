@@ -10,7 +10,7 @@ const Footer = () => {
       <div className="auto-container">
         <div className="widgets-section" data-aos="fade-up">
           <div className="row">
-            <div className="big-column col-xl-3 col-lg-3 col-md-12">
+            {/* <div className="big-column col-xl-3 col-lg-3 col-md-12">
               <div className="footer-column about-widget">
                 <div className="logo">
                   <Link href="/">
@@ -34,10 +34,10 @@ const Footer = () => {
                   </a>
                 </p>
               </div>
-            </div>
+            </div> */}
             {/* End footer address left widget */}
 
-            <div className="big-column col-xl-9 col-lg-9 col-md-12">
+            {/* <div className="big-column col-xl-9 col-lg-9 col-md-12">
               <div className="row">
                 <FooterContent3 />
 
@@ -48,9 +48,8 @@ const Footer = () => {
                   </div>
                 </div>
               </div>
-              {/* End .row */}
-            </div>
-            {/* End col-xl-8 */}
+              
+            </div> */}
           </div>
         </div>
         {/* <!--Widgets Section--> */}

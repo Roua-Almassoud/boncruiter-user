@@ -1,6 +1,6 @@
-import Register2 from "../../common/form/register/Register2";
-import MobileMenu from "../../header/MobileMenu";
-import Header from "./Header";
+import Register from '../../common/form/register/Register';
+import MobileMenu from '../../header/MobileMenu';
+import Header from './Header';
 
 const index = () => {
   return (
@@ -14,12 +14,12 @@ const index = () => {
       <div className="login-section">
         <div
           className="image-layer"
-          style={{ backgroundImage: "url(/images/background/12.jpg)" }}
+          style={{ backgroundImage: 'url(/images/background/12.jpg)' }}
         ></div>
         <div className="outer-box">
           {/* <!-- Login Form --> */}
           <div className="login-form default-form">
-            <Register2 />
+            <Register />
           </div>
           {/* <!--End Login Form --> */}
         </div>

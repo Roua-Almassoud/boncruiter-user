@@ -1,12 +1,10 @@
+'use client';
 
-
-'use client'
-
-import Link from "next/link";
-import jobs from "../../../data/job-featured";
-import ListingShowing from "../components/ListingShowing";
-import JobSelect from "../components/JobSelect";
-import { useDispatch, useSelector } from "react-redux";
+import Link from 'next/link';
+import jobs from '../../../data/job-featured';
+import ListingShowing from '../components/ListingShowing';
+import JobSelect from '../components/JobSelect';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   addCategory,
   addDatePosted,
@@ -17,8 +15,8 @@ import {
   addPerPage,
   addSalary,
   addSort,
-} from "../../../features/filter/filterSlice";
-import Image from "next/image";
+} from '../../../features/filter/filterSlice';
+import Image from 'next/image';
 
 const FilterJobBox = () => {
   const { jobList, jobSort } = useSelector((state) => state.filter);
@@ -39,13 +37,13 @@ const FilterJobBox = () => {
 
   // keyword filter on title
   const keywordFilter = (item) =>
-    keyword !== ""
+    keyword !== ''
       ? item.jobTitle.toLocaleLowerCase().includes(keyword.toLocaleLowerCase())
       : item;
 
   // location filter
   const locationFilter = (item) =>
-    location !== ""
+    location !== ''
       ? item?.location
           ?.toLocaleLowerCase()
           .includes(location?.toLocaleLowerCase())
@@ -58,31 +56,31 @@ const FilterJobBox = () => {
 
   // category filter
   const categoryFilter = (item) =>
-    category !== ""
+    category !== ''
       ? item?.category?.toLocaleLowerCase() === category?.toLocaleLowerCase()
       : item;
 
   // job-type filter
   const jobTypeFilter = (item) =>
-    item.jobType !== undefined && jobTypeSelect !== ""
-      ? item?.jobType[0]?.type.toLocaleLowerCase().split(" ").join("-") ===
+    item.jobType !== undefined && jobTypeSelect !== ''
+      ? item?.jobType[0]?.type.toLocaleLowerCase().split(' ').join('-') ===
           jobTypeSelect && item
       : item;
 
   // date-posted filter
   const datePostedFilter = (item) =>
-    datePosted !== "all" && datePosted !== ""
+    datePosted !== 'all' && datePosted !== ''
       ? item?.created_at
           ?.toLocaleLowerCase()
-          .split(" ")
-          .join("-")
+          .split(' ')
+          .join('-')
           .includes(datePosted)
       : item;
 
   // experience level filter
   const experienceFilter = (item) =>
-    experienceSelect !== ""
-      ? item?.experience?.split(" ").join("-").toLocaleLowerCase() ===
+    experienceSelect !== ''
+      ? item?.experience?.split(' ').join('-').toLocaleLowerCase() ===
           experienceSelect && item
       : item;
 
@@ -93,7 +91,7 @@ const FilterJobBox = () => {
 
   // sort filter
   const sortFilter = (a, b) =>
-    sort === "des" ? a.id > b.id && -1 : a.id < b.id && -1;
+    sort === 'des' ? a.id > b.id && -1 : a.id < b.id && -1;
 
   let content = jobs
     ?.filter(keywordFilter)
@@ -114,7 +112,7 @@ const FilterJobBox = () => {
               <Image width={50} height={49} src={item.logo} alt="item brand" />
             </span>
             <h4>
-              <Link href={`/job-single-v1/${item.id}`}>{item.jobTitle}</Link>
+              <Link href={`/job-single-v5/${item.id}`}>{item.jobTitle}</Link>
             </h4>
 
             <ul className="job-info">
@@ -170,14 +168,14 @@ const FilterJobBox = () => {
 
   // clear all filters
   const clearAll = () => {
-    dispatch(addKeyword(""));
-    dispatch(addLocation(""));
-    dispatch(addCategory(""));
-    dispatch(addJobTypeSelect(""));
-    dispatch(addDatePosted(""));
-    dispatch(addExperienceSelect(""));
+    dispatch(addKeyword(''));
+    dispatch(addLocation(''));
+    dispatch(addCategory(''));
+    dispatch(addJobTypeSelect(''));
+    dispatch(addDatePosted(''));
+    dispatch(addExperienceSelect(''));
     dispatch(addSalary({ min: 0, max: 20000 }));
-    dispatch(addSort(""));
+    dispatch(addSort(''));
     dispatch(addPerPage({ start: 0, end: 0 }));
   };
   return (
@@ -191,21 +189,21 @@ const FilterJobBox = () => {
         {/* End .showing-result */}
 
         <div className="sort-by">
-          {keyword !== "" ||
-          location !== "" ||
-          category !== "" ||
-          jobTypeSelect !== "" ||
-          datePosted !== "" ||
-          experienceSelect !== "" ||
+          {keyword !== '' ||
+          location !== '' ||
+          category !== '' ||
+          jobTypeSelect !== '' ||
+          datePosted !== '' ||
+          experienceSelect !== '' ||
           salary?.min !== 0 ||
           salary?.max !== 20000 ||
-          sort !== "" ||
+          sort !== '' ||
           perPage.start !== 0 ||
           perPage.end !== 0 ? (
             <button
               onClick={clearAll}
               className="btn btn-danger text-nowrap me-2"
-              style={{ minHeight: "45px", marginBottom: "15px" }}
+              style={{ minHeight: '45px', marginBottom: '15px' }}
             >
               Clear All
             </button>

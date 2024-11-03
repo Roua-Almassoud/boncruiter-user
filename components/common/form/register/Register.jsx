@@ -29,11 +29,11 @@ const Register = () => {
         <div className="text">
           Already have an account?{' '}
           <Link
-            href="#"
-            className="call-modal login"
-            data-bs-toggle="modal"
-            data-bs-dismiss="modal"
-            data-bs-target="#loginPopupModal"
+            href="/login"
+            // className="call-modal login"
+            // data-bs-toggle="modal"
+            // data-bs-dismiss="modal"
+            // data-bs-target="#loginPopupModal"
           >
             LogIn
           </Link>

@@ -134,3 +134,10 @@ border-bottom: 0 !important;*/
 .job-search-form.style-two .form-group {
   border-right: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+.skills-select {
+  box-shadow: none !important;
+  .searchWrapper {
+    border: none;
+  }
+}

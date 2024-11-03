@@ -149,10 +149,10 @@ const FormContent = () => {
         <div className="text">
           Don&apos;t have an account?{' '}
           <Link
-            href="#"
-            className="call-modal signup"
-            data-bs-toggle="modal"
-            data-bs-target="#registerModal"
+            href="/register"
+            // className="call-modal signup"
+            // data-bs-toggle="modal"
+            // data-bs-target="#registerModal"
           >
             Signup
           </Link>

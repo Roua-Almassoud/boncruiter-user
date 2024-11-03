@@ -1,41 +1,62 @@
-'use client'
-
-import { useRouter } from "next/navigation";
-
-
+'use client';
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
 
 const SearchForm5 = () => {
-    const router = useRouter()
-  const handleSubmit = (event) => {
-    event.preventDefault();
+  const router = useRouter();
+  const [searchValue, setSearchValue] = useState('');
+  const handleSearch = () => {
+    //router.push('/job-list-v6', { state: searchValue });
+    router.push('/job-list-v6', { query: { name: searchValue } });
+    //Router.push({ pathname: '/job-list-v6',query: { searchValue },});
+  };
+
+  const handleChange = (e) => {
+    setSearchValue(e.target.value);
   };
 
   return (
-    <form onClick={handleSubmit}>
-      <div className="row justify-content-center justify-content-md-between">
-        {/* <!-- Form Group --> */}
-        <div className="form-group col-lg-9">
-          <span className="icon flaticon-search-1"></span>
-          <input
-            type="text"
-            name="field_name"
-            placeholder="Job title, keywords, or company"
-          />
-        </div>
+    //<form onClick={handleSubmit}>
+    <div className="row justify-content-center justify-content-md-between">
+      {/* <!-- Form Group --> */}
+      <div className="form-group col-lg-9">
+        <span className="icon flaticon-search-1"></span>
+        <input
+          value={searchValue}
+          onChange={(e) => handleChange(e)}
+          type="text"
+          name="field_name"
+          placeholder="Job title, keywords, or company"
+        />
+      </div>
 
-        {/* <!-- Form Group --> */}
-        <div className="form-group col-auto">
+      {/* <!-- Form Group --> */}
+      <div className="form-group col-auto">
+        {/* <Link>
+          href={{ pathname: '/job-list-v6', query: searchValue }}
           <button
             type="submit"
             className="theme-btn btn-style-two"
-            onClick={() => router.push("/job-list-v9")}
-            
+            onClick={() => handleSearch()}
           >
             Find Jobs
           </button>
-        </div>
+        </Link> */}
+        <Link
+          className="theme-btn btn-style-two"
+          href={{
+            pathname: '/job-list-v6',
+            query: {
+              search: searchValue,
+            },
+          }}
+        >
+          Find Jobs
+        </Link>
       </div>
-    </form>
+    </div>
+    // </form>
   );
 };
 

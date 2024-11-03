@@ -1,10 +1,9 @@
+'use client';
 
-'use client'
-
-import Link from "next/link";
-import { useEffect, useState } from "react";
-import HeaderNavContent from "./HeaderNavContent";
-import Image from "next/image";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
+import HeaderNavContent from './HeaderNavContent';
+import Image from 'next/image';
 
 const DefaulHeader2 = () => {
   const [navbar, setNavbar] = useState(false);
@@ -18,14 +17,15 @@ const DefaulHeader2 = () => {
   };
 
   useEffect(() => {
-    window.addEventListener("scroll", changeBackground);
+    window.addEventListener('scroll', changeBackground);
   }, []);
 
   return (
     // <!-- Main Header-->
     <header
-      className={`main-header  ${navbar ? "fixed-header animated slideInDown" : ""
-        }`}
+      className={`main-header  ${
+        navbar ? 'fixed-header animated slideInDown' : ''
+      }`}
     >
       {/* <!-- Main box --> */}
       <div className="main-box">
@@ -67,10 +67,10 @@ const DefaulHeader2 = () => {
               Upload your CV
             </a> */}
             <a
-              href="#"
-              className="theme-btn btn-style-three call-modal"
-              data-bs-toggle="modal"
-              data-bs-target="#loginPopupModal"
+              href="/login"
+              // className="theme-btn btn-style-three call-modal"
+              // data-bs-toggle="modal"
+              // data-bs-target="#loginPopupModal"
             >
               Login / Register
             </a>

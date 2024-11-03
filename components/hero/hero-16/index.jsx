@@ -24,9 +24,9 @@ const index = () => {
           </div>
           {/* <!-- Job Search Form --> */}
 
-          <div className="features-icons">
+          {/* <div className="features-icons">
             <JobCategorie9 />
-          </div>
+          </div> */}
         </div>
         {/* End content-box */}
       </div>
