@@ -91,7 +91,8 @@ const FormContent = () => {
         setLoading(false);
         const userId = response.data?.data?.User?.id;
         setAlertError('');
-        localStorage.setItem('email', user.email);
+        if (typeof window !== 'undefined')
+          localStorage.setItem('email', user.email);
         router.push('/verify-account');
       } else {
         setLoading(false);

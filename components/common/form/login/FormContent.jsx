@@ -65,7 +65,8 @@ const FormContent = () => {
       if (response.data.code === '200') {
         setLoading(false);
         const userId = response.data?.data?.accessToken;
-        localStorage.setItem('userId', userId);
+        if (typeof window !== 'undefined')
+          localStorage.setItem('userId', userId);
         setAlertError('');
         router.push('/profile');
       } else {

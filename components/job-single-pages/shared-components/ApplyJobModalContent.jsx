@@ -5,8 +5,10 @@ import { useRouter } from 'next/navigation';
 const ApplyJobModalContent = ({ jobId }) => {
   const router = useRouter();
   const handleApply = async () => {
-    if (!localStorage.getItem('userId')) {
-      router.push('/login');
+    if (typeof window !== 'undefined') {
+      if (!localStorage.getItem('userId')) {
+        router.push('/login');
+      }
     } else {
       //setLoading(true);
       const response = await Api.call(

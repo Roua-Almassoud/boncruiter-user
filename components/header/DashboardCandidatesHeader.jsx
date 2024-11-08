@@ -55,29 +55,30 @@ const DashboardCandidatesHeader = () => {
           {/* End .nav-outer */}
 
           <div className="outer-box">
-            {!localStorage.getItem('userId') ? (
-              <>
-                <button className="menu-btn">
-                  <span className="count">1</span>
-                  <span className="icon la la-heart-o"></span>
-                </button>
-                {/* wishlisted menu */}
+            {typeof window !== 'undefined' ? (
+              !localStorage.getItem('userId') ? (
+                <>
+                  <button className="menu-btn">
+                    <span className="count">1</span>
+                    <span className="icon la la-heart-o"></span>
+                  </button>
+                  {/* wishlisted menu */}
 
-                <button className="menu-btn">
-                  <span className="icon la la-bell"></span>
-                </button>
-                {/* End notification-icon */}
+                  <button className="menu-btn">
+                    <span className="icon la la-bell"></span>
+                  </button>
+                  {/* End notification-icon */}
 
-                {/* <!-- Dashboard Option --> */}
-                {/* <!-- Add Listing --> */}
-                {/* <Link href="/cv-manager" className="upload-cv">
+                  {/* <!-- Dashboard Option --> */}
+                  {/* <!-- Add Listing --> */}
+                  {/* <Link href="/cv-manager" className="upload-cv">
             Upload your CV
           </Link> */}
 
-                {/* <!-- Login/Register --> */}
+                  {/* <!-- Login/Register --> */}
 
-                <div className="btn-box">
-                  {/* <a
+                  <div className="btn-box">
+                    {/* <a
               href="#"
               className="theme-btn btn-style-three call-modal"
               data-bs-toggle="modal"
@@ -85,35 +86,35 @@ const DashboardCandidatesHeader = () => {
             >
               Upload your CV
             </a> */}
+                    <a
+                      href="/login"
+                      // className="theme-btn btn-style-three call-modal"
+                      // data-bs-toggle="modal"
+                      // data-bs-target="#loginPopupModal"
+                    >
+                      Login / Register
+                    </a>
+                  </div>
+                </>
+              ) : (
+                <div className="dropdown dashboard-option">
                   <a
-                    href="/login"
-                    // className="theme-btn btn-style-three call-modal"
-                    // data-bs-toggle="modal"
-                    // data-bs-target="#loginPopupModal"
+                    className="dropdown-toggle"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
                   >
-                    Login / Register
+                    <Image
+                      alt="avatar"
+                      className="thumb"
+                      src="/images/resource/candidate-1.png"
+                      width={50}
+                      height={50}
+                    />
+                    <span className="name">My Account</span>
                   </a>
-                </div>
-              </>
-            ) : (
-              <div className="dropdown dashboard-option">
-                <a
-                  className="dropdown-toggle"
-                  role="button"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <Image
-                    alt="avatar"
-                    className="thumb"
-                    src="/images/resource/candidate-1.png"
-                    width={50}
-                    height={50}
-                  />
-                  <span className="name">My Account</span>
-                </a>
 
-                {/* <ul className="dropdown-menu">
+                  {/* <ul className="dropdown-menu">
               {candidatesMenuData.map((item) => (
                 <li
                   className={`${
@@ -129,51 +130,52 @@ const DashboardCandidatesHeader = () => {
                 </li>
               ))}
             </ul> */}
-                <ul className="dropdown-menu">
-                  <li
-                    className={`${
-                      isActiveLink('/profile', usePathname()) ? 'active' : ''
-                    } mb-1`}
-                    key={1}
-                  >
-                    <Link href={'/profile'}>
-                      <i className={`la la-user-tie`}></i> {'Profile'}
-                    </Link>
-                  </li>
-                  <li
-                    className={`${
-                      isActiveLink('/logout', usePathname()) ? 'active' : ''
-                    } mb-1`}
-                    onClick={() => {
-                      localStorage.clear();
-                      router.push('/');
-                      //window.location.reload();
-                    }}
-                    style={{
-                      position: 'relative',
-                      display: 'flex',
-                      alignItems: 'center',
-                      padding: '10px 30px',
-                      lineHeight: '30px',
-                      fontWeight: '400',
-                      fontSize: '15px',
-                      color: '#696969',
-                      textAlign: 'left',
-                      textTransform: 'capitalize',
-                      borderRadius: '8px',
-                      transition: 'all 500ms ease',
-                      cursor: 'pointer',
-                    }}
-                    key={2}
-                  >
-                    {/* <Link href={''}>
+                  <ul className="dropdown-menu">
+                    <li
+                      className={`${
+                        isActiveLink('/profile', usePathname()) ? 'active' : ''
+                      } mb-1`}
+                      key={1}
+                    >
+                      <Link href={'/profile'}>
+                        <i className={`la la-user-tie`}></i> {'Profile'}
+                      </Link>
+                    </li>
+                    <li
+                      className={`${
+                        isActiveLink('/logout', usePathname()) ? 'active' : ''
+                      } mb-1`}
+                      onClick={() => {
+                        if (typeof window !== 'undefined') localStorage.clear();
+                        router.push('/');
+                        //window.location.reload();
+                      }}
+                      style={{
+                        position: 'relative',
+                        display: 'flex',
+                        alignItems: 'center',
+                        padding: '10px 30px',
+                        lineHeight: '30px',
+                        fontWeight: '400',
+                        fontSize: '15px',
+                        color: '#696969',
+                        textAlign: 'left',
+                        textTransform: 'capitalize',
+                        borderRadius: '8px',
+                        transition: 'all 500ms ease',
+                        cursor: 'pointer',
+                      }}
+                      key={2}
+                    >
+                      {/* <Link href={''}>
                     <i className={`la la-logout`}></i> {'Logout'}
                   </Link> */}
-                    Logout
-                  </li>
-                </ul>
-              </div>
-            )}
+                      Logout
+                    </li>
+                  </ul>
+                </div>
+              )
+            ) : null}
             {/* End dropdown */}
           </div>
           {/* End outer-box */}

@@ -39,7 +39,7 @@ const ProfileSidebar = () => {
       updatedInfo.projects = fullData.projects;
 
       updatedInfo.experiences = fullData.experiences;
-      localStorage.setItem('info', updatedInfo);
+      //if (typeof window !== 'undefined')localStorage.setItem('info', updatedInfo);
       // setUserSections(updatedInfo);
       // setLoading(false);
     } else {
