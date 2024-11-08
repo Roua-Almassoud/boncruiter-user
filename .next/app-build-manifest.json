@@ -1,40 +1,35 @@
 {
   "pages": {
-    "/page": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/page.js"
-    ],
-    "/not-found": [
-      "static/chunks/webpack.js",
-      "static/chunks/main-app.js",
-      "static/chunks/app/not-found.js"
-    ],
     "/layout": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
-    "/(others)/login/page": [
+    "/not-found": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(others)/login/page.js"
+      "static/chunks/app/not-found.js"
     ],
-    "/(others)/register/page": [
+    "/(job-single)/job-single-v5/[id]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(others)/register/page.js"
+      "static/chunks/app/(job-single)/job-single-v5/[id]/page.js"
     ],
     "/(job-list)/job-list-v6/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/(job-list)/job-list-v6/page.js"
     ],
-    "/(job-single)/job-single-v5/[id]/page": [
+    "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/(job-single)/job-single-v5/[id]/page.js"
+      "static/chunks/app/page.js"
+    ],
+    "/(others)/login/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/(others)/login/page.js"
     ]
   }
 }

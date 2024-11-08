@@ -320,6 +320,34 @@ input:checked + .slider:before {
 .default-form {
   position: relative;
 }
+.default-form .react-date-picker {
+  width: 100%;
+  border: 1px solid #f1f5f9;
+  font-size: 15px;
+  line-height: 34px;
+  background-color: #f0f5f7;
+  border: 1px solid #f0f5f7;
+  border-radius: 6px;
+  font-weight: 500 !important;
+  color: #1e293b !important;
+  padding: 0.07rem 0.4rem;
+}
+.default-form .react-date-picker .react-date-picker__wrapper {
+  border: none;
+}
+.default-form .react-date-picker .react-date-picker__inputGroup {
+  display: flex;
+  align-items: center;
+}
+.default-form .react-date-picker .react-date-picker__inputGroup input[type=number]:focus {
+  background-color: #f0f5f7;
+  border: 1px solid #f0f5f7;
+}
+.default-form .react-date-picker .react-date-picker__calendar .react-calendar {
+  background-color: #f0f5f7;
+  border: 1px solid #f0f5f7;
+  border-radius: 5px;
+}
 .default-form .form-group {
   position: relative;
   margin-bottom: 20px;
@@ -578,4 +606,33 @@ input:checked + .slider:before {
 
 button:disabled {
   cursor: not-allowed !important;
+}
+
+.default-form .card {
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  margin-bottom: 20px !important;
+  width: 80%;
+  margin: auto;
+}
+.default-form .list-group {
+  width: 80%;
+  margin: auto;
+  padding-right: 0;
+}
+.default-form .save-btn {
+  width: 80%;
+}
+.default-form .custom-form-group {
+  width: 80%;
+}
+.default-form .action-section {
+  display: flex;
+  justify-content: space-around;
+}
+.default-form .data-list .data p:not(:first-child) {
+  margin-bottom: 0;
+  font-size: 14px;
+  color: rgba(60, 55, 91, 0.5);
 }/*# sourceMappingURL=forms.css.map */

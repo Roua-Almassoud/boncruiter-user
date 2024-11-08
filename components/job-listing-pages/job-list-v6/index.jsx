@@ -9,11 +9,13 @@ import { useSearchParams } from 'next/navigation';
 import { useState, useEffect } from 'react';
 import Api from '../../../api/Api';
 import Utils from '../../../components/utils/utils';
+import { useRouter } from 'next/navigation';
 
 const index = () => {
+  const router = useRouter();
   const searchParams = useSearchParams();
   const search = searchParams.get('search');
-
+ 
   const [loading, setLoading] = useState(true);
   const [searchForm, setSearchForm] = useState({
     title: search,
@@ -30,7 +32,7 @@ const index = () => {
     const response = await Api.call({}, `/user/available-skills`, 'get', '');
     if (response.data) {
       let availableSkills = response.data.data.list.map((skill) => {
-        return { id: skill.id, name: skill.name };
+        return { value: skill.id, label: skill.name };
       });
 
       setSkills(availableSkills);
@@ -64,10 +66,15 @@ const index = () => {
       setLoading(false);
     }
   };
+  useEffect(() => {
+    const searchValue = router.state?.searchValue;
+    if (searchValue) {
+    }
+  }, []);
 
   useEffect(() => {
-    //getJobs();
-    //getSkills();
+    getJobs();
+    getSkills();
   }, []);
 
   return (
@@ -86,7 +93,13 @@ const index = () => {
 
       <section className="page-title style-three">
         <div className="auto-container">
-          <JobSearchForm />
+          <JobSearchForm
+            searchForm={searchForm}
+            setSearchForm={setSearchForm}
+            skills={skills}
+            selectedSkills={selectedSkills}
+            setSelectedSkills={selectedSkills}
+          />
           {/* <!-- Job Search Form --> */}
         </div>
       </section>
@@ -97,7 +110,7 @@ const index = () => {
           <div className="row">
             <div className="content-column col-lg-12">
               <div className="ls-outer">
-                <FilterJobBox />
+                <FilterJobBox jobsList={jobsList}/>
               </div>
             </div>
             {/* <!-- End Content Column --> */}

@@ -47,7 +47,7 @@ Banner Section
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  content: "";
+  content: '';
 }
 
 .banner-section-two .content-column {
@@ -410,7 +410,7 @@ Banner Section Five
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  content: "";
+  content: '';
 }
 
 .banner-section-five .content-column {
@@ -528,7 +528,7 @@ Banner Section Six
 
 .banner-section-six:after,
 .banner-section-six:before {
-  content: "";
+  content: '';
   position: absolute;
   left: 0;
   width: 50%;
@@ -774,7 +774,7 @@ Banner Section Eight
   top: 0;
   width: 100%;
   bottom: 0;
-  content: "";
+  content: '';
   background: -o-linear-gradient(191.23deg, #f5f7fc 0.12%, #f5f7fc 99.74%);
   background: linear-gradient(258.77deg, #f5f7fc 0.12%, #f5f7fc 99.74%);
 }
@@ -1401,7 +1401,7 @@ Banner Section
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  content: "";
+  content: '';
 }
 
 .banner-section .content-column {
@@ -1466,6 +1466,9 @@ Banner Section
 
 .job-search-form {
   padding: 20px 20px 20px 30px;
+  .select__value-container.select__value-container--is-multi {
+    margin-left: 30px;
+  }
 }
 
 .job-search-form .form-group {

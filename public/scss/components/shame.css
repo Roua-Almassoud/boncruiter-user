@@ -1363,6 +1363,9 @@ Banner Section
 .job-search-form {
   padding: 20px 20px 20px 30px;
 }
+.job-search-form .select__value-container.select__value-container--is-multi {
+  margin-left: 30px;
+}
 
 .job-search-form .form-group {
   position: relative;

@@ -3,8 +3,17 @@ import JobSelect from '../components/JobSelect';
 import LocationBox from '../components/LocationBox';
 import SearchBox from '../components/SearchBox';
 import Multiselect from 'multiselect-react-dropdown';
+import Select from 'react-select';
 
-const JobSearchForm = () => {
+const JobSearchForm = (props) => {
+  const {
+    searchForm,
+    setSearchForm,
+    skills,
+    selectedSkills,
+    setSelectedSkills,
+  } = props;
+
   return (
     <>
       <div className="job-search-form">
@@ -15,7 +24,7 @@ const JobSearchForm = () => {
               type="text"
               name="listing-search"
               placeholder="Job title, keywords, or company"
-              //value={getKeyWord}
+              value={searchForm?.title}
               //onChange={keywordHandler}
             />
             <span className="icon flaticon-search-3"></span>
@@ -31,7 +40,16 @@ const JobSearchForm = () => {
               //value={getLocation}
               //onChange={locationHandler}
             /> */}
-            <Multiselect
+            <Select
+              //className={'skills-select'}
+              placeholder={'Skills'}
+              isMulti
+              name="Skills"
+              options={skills}
+              className="basic-multi-select"
+              classNamePrefix="select"
+            />
+            {/* <Multiselect
               className={`skills-select shadow bg-white 
               `}
               options={[
@@ -44,7 +62,7 @@ const JobSearchForm = () => {
               //   onRemove={onRemove}
               placeholder={'Skills'}
               displayValue="name"
-            />
+            /> */}
             <span className="icon flaticon-briefcase"></span>
           </div>
           {/* <!-- Form Group --> */}

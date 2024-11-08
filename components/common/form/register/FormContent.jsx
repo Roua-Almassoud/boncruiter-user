@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import Utils from '../../../../components/utils/utils';
 import Api from '../../../../api/Api';
+import { useRouter } from 'next/navigation';
 const FormContent = () => {
+  const router = useRouter();
   const [alertError, setAlertError] = useState('');
   const [user, setUser] = useState({
     email: '',
@@ -89,7 +91,8 @@ const FormContent = () => {
         setLoading(false);
         const userId = response.data?.data?.User?.id;
         setAlertError('');
-        //navigate('/verify-account', { state: user.email });
+        localStorage.setItem('email', user.email);
+        router.push('/verify-account');
       } else {
         setLoading(false);
         setAlertError(

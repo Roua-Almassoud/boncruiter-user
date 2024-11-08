@@ -18,7 +18,7 @@ import {
 } from '../../../features/filter/filterSlice';
 import Image from 'next/image';
 
-const FilterJobBox = () => {
+const FilterJobBox = (props) => {
   const { jobList, jobSort } = useSelector((state) => state.filter);
   const {
     keyword,
@@ -35,6 +35,15 @@ const FilterJobBox = () => {
 
   const dispatch = useDispatch();
 
+  const { jobsList } = props;
+
+  const calculate = (item) => {
+    const currentDate = new Date();
+    const postDate = new Date(item.createdAt);
+    const differenceInTime = currentDate.getTime() - postDate.getTime();
+    let differenceInDays = Math.round(differenceInTime / (1000 * 3600 * 24));
+    return differenceInDays;
+  };
   // keyword filter on title
   const keywordFilter = (item) =>
     keyword !== ''
@@ -93,32 +102,37 @@ const FilterJobBox = () => {
   const sortFilter = (a, b) =>
     sort === 'des' ? a.id > b.id && -1 : a.id < b.id && -1;
 
-  let content = jobs
-    ?.filter(keywordFilter)
-    ?.filter(locationFilter)
-    ?.filter(destinationFilter)
-    ?.filter(categoryFilter)
-    ?.filter(jobTypeFilter)
-    ?.filter(datePostedFilter)
-    ?.filter(experienceFilter)
-    ?.filter(salaryFilter)
-    ?.sort(sortFilter)
-    .slice(perPage.start, perPage.end !== 0 ? perPage.end : 16)
+  let content = jobsList
+    // ?.filter(keywordFilter)
+    // ?.filter(locationFilter)
+    // ?.filter(destinationFilter)
+    // ?.filter(categoryFilter)
+    // ?.filter(jobTypeFilter)
+    // ?.filter(datePostedFilter)
+    // ?.filter(experienceFilter)
+    // ?.filter(salaryFilter)
+    // ?.sort(sortFilter)
+    // .slice(perPage.start, perPage.end !== 0 ? perPage.end : 16)
     ?.map((item) => (
       <div className="job-block col-lg-6 col-md-12 col-sm-12" key={item.id}>
         <div className="inner-box">
           <div className="content">
             <span className="company-logo">
-              <Image width={50} height={49} src={item.logo} alt="item brand" />
+              <Image
+                width={50}
+                height={49}
+                src={'/images/resource/company-logo/1-1.png'}
+                alt="item brand"
+              />
             </span>
             <h4>
-              <Link href={`/job-single-v5/${item.id}`}>{item.jobTitle}</Link>
+              <Link href={`/job-single-v5/${item.id}`}>{item.title}</Link>
             </h4>
 
             <ul className="job-info">
               <li>
                 <span className="icon flaticon-briefcase"></span>
-                {item.company}
+                {item.company?.name}
               </li>
               {/* compnay info */}
               <li>
@@ -127,11 +141,15 @@ const FilterJobBox = () => {
               </li>
               {/* location info */}
               <li>
-                <span className="icon flaticon-clock-3"></span> {item.time}
+                <span className="icon flaticon-clock-3"></span>{' '}
+                {`${calculate(item)} day ago`}
               </li>
               {/* time info */}
               <li>
-                <span className="icon flaticon-money"></span> {item.salary}
+                <span className="icon flaticon-money"></span>{' '}
+                {item.salary
+                  ? item.salary
+                  : `$${item.salaryMin} - $${item.salaryMax}`}
               </li>
               {/* salary info */}
             </ul>
@@ -267,7 +285,7 @@ const FilterJobBox = () => {
       <div className="row">{content}</div>
       {/* End .row with jobs */}
 
-      <ListingShowing />
+      {/* <ListingShowing /> */}
       {/* <!-- End Pagination --> */}
     </>
   );

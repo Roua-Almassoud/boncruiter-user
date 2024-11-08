@@ -26,6 +26,12 @@ Buttons Styles
   padding: 18px 35px 15px 35px;
 }
 
+.btn-style-one.applied-disable {
+  pointer-events: none;
+  cursor: default;
+  background-color: #bdbdbd;
+}
+
 .btn-style-one:hover {
   color: #ffffff;
   background-color: var(--primary-hover-bg-color);

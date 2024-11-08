@@ -1,13 +1,13 @@
-import MobileMenu from "../../../header/MobileMenu";
-import LoginPopup from "../../../common/form/login/LoginPopup";
-import DashboardCandidatesSidebar from "../../../header/DashboardCandidatesSidebar";
-import BreadCrumb from "../../BreadCrumb";
-import MyProfile from "./components/my-profile";
-import SocialNetworkBox from "./components/SocialNetworkBox";
-import ContactInfoBox from "./components/ContactInfoBox";
-import CopyrightFooter from "../../CopyrightFooter";
-import DashboardCandidatesHeader from "../../../header/DashboardCandidatesHeader";
-import MenuToggler from "../../MenuToggler";
+import MobileMenu from '../../header/MobileMenu';
+import LoginPopup from '../../common/form/login/LoginPopup';
+import ProfileSidebar from '../../header/ProfileSidebar';
+import BreadCrumb from '../BreadCrumb';
+import MyProfile from './components/my-profile';
+import SocialNetworkBox from './components/SocialNetworkBox';
+import ContactInfoBox from './components/ContactInfoBox';
+import CopyrightFooter from '../CopyrightFooter';
+import DashboardCandidatesHeader from '../../header/DashboardCandidatesHeader';
+import MenuToggler from '../MenuToggler';
 
 const index = () => {
   return (
@@ -24,7 +24,7 @@ const index = () => {
       <MobileMenu />
       {/* End MobileMenu */}
 
-      <DashboardCandidatesSidebar />
+      <ProfileSidebar />
       {/* <!-- End Candidates Sidebar Menu --> */}
 
       {/* <!-- Dashboard --> */}
@@ -90,3 +90,4 @@ const index = () => {
 };
 
 export default index;
+

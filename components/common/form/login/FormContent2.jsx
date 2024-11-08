@@ -1,70 +1,127 @@
-import Link from 'next/link';
-import LoginWithSocial from './LoginWithSocial';
-
+'use client';
+import React, { useState } from 'react';
+import Api from '../../../../api/Api';
+import Utils from '../../../../components/utils/utils';
+import { useRouter } from 'next/navigation';
 const FormContent2 = () => {
+  const router = useRouter();
+  const [alertError, setAlertError] = useState('');
+  const [form, setForm] = useState({
+    email: localStorage.getItem('email'),
+    code: '1234',
+  });
+  const [loading, setLoading] = useState(false);
+  const [errors, setErrors] = useState({});
+  const validate = (field = '', value = '') => {
+    let errorsList = errors;
+    if (field) {
+      if (value) {
+        if (field === 'phone' && !Utils.isEmpty(form[field])) {
+          if (!Utils.validatePhoneNumber(form[field]))
+            errorsList = { ...errorsList, phone: 'Invalid Phone Number!' };
+        } else {
+          delete errorsList[field];
+        }
+        delete errorsList[field];
+      } else if (field !== 'phone')
+        errorsList = { ...errorsList, [field]: 'Field is Required!' };
+    } else {
+      Object.keys(form).map((item) => {
+        if (item !== 'phone' && item !== 'image') {
+          if (!form[item]) {
+            errorsList = { ...errorsList, [item]: 'Field is Required!' };
+          } else {
+            if (item === 'email') {
+              if (!Utils.validateEmail(form[item]))
+                errorsList = { ...errorsList, email: 'Invalid Email Address!' };
+            }
+          }
+        } else {
+          errorsList = { ...errorsList };
+
+          if (item === 'phone' && !Utils.isEmpty(form[item])) {
+            if (!Utils.validatePhoneNumber(form[item]))
+              errorsList = { ...errorsList, phone: 'Invalid Phone Number!' };
+          }
+        }
+      });
+    }
+    setErrors(errorsList);
+    return errorsList;
+  };
+  const handleSubmit = async () => {
+    const errorsList = validate();
+    setLoading(true);
+    if (Utils.isEmptyObject(errorsList)) {
+      const response = await Api.call(
+        form,
+        `/user/auth/verifyAccount`,
+        'post',
+        ''
+      );
+      if (response.data.code === '200') {
+        setLoading(false);
+        const userId = response.data?.data?.accessToken;
+        localStorage.setItem('userId', userId);
+        setAlertError('');
+        router.push('/');
+      } else {
+        setLoading(false);
+        setAlertError(
+          response.data.message || 'Something went wrong, please try again!'
+        );
+      }
+    } else {
+      setLoading(false);
+      setAlertError('');
+    }
+  };
+  const handleChange = (value, field) => {
+    validate(field, value);
+    setForm({ ...form, [field]: value });
+  };
   return (
     <div className="form-inner">
-      <h3>Login to Bonzuttner</h3>
+      <h3>Verify Account</h3>
 
       {/* <!--Login Form--> */}
-      <form method="post">
+      <form onSubmit={(event) => event.preventDefault()}>
         <div className="form-group">
-          <label>Username</label>
-          <input type="text" name="username" placeholder="Username" required />
+          <label>Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            value={form?.email}
+            readOnly
+            disabled
+          />
         </div>
         {/* name */}
 
         <div className="form-group">
-          <label>Password</label>
+          <label>Code</label>
           <input
-            type="password"
-            name="password"
-            placeholder="Password"
-            required
+            type="number"
+            className="form-control"
+            id="code"
+            value={form?.code}
+            onChange={(event) => handleChange(event.target.value, 'code')}
           />
         </div>
-        {/* password */}
-
-        <div className="form-group">
-          <div className="field-outer">
-            <div className="input-group checkboxes square">
-              <input type="checkbox" name="remember-me" id="remember" />
-              <label htmlFor="remember" className="remember">
-                <span className="custom-checkbox"></span> Remember me
-              </label>
-            </div>
-            <a href="#" className="pwd">
-              Forgot password?
-            </a>
-          </div>
-        </div>
-        {/* forgot password */}
 
         <div className="form-group">
           <button
             className="theme-btn btn-style-one"
             type="submit"
             name="log-in"
+            onClick={() => handleSubmit()}
           >
-            Log In
+            Verify
           </button>
         </div>
         {/* login */}
       </form>
-      {/* End form */}
-
-      <div className="bottom-box">
-        <div className="text">
-          Don&apos;t have an account? <Link href="/register">Signup</Link>
-        </div>
-
-        {/* <div className="divider">
-          <span>or</span>
-        </div> */}
-
-        {/* <LoginWithSocial /> */}
-      </div>
-      {/* End bottom-box LoginWithSocial */}
     </div>
   );
 };

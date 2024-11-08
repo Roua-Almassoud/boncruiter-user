@@ -1,12 +1,34 @@
-import Link from "next/link";
+import Link from 'next/link';
+import Api from '../../../api/Api';
+import { useRouter } from 'next/navigation';
 
-const ApplyJobModalContent = () => {
+const ApplyJobModalContent = ({ jobId }) => {
+  const router = useRouter();
+  const handleApply = async () => {
+    if (!localStorage.getItem('userId')) {
+      router.push('/login');
+    } else {
+      //setLoading(true);
+      const response = await Api.call(
+        { jobId: jobId },
+        `/job/apply`,
+        'post',
+        ''
+      );
+      if (response.data.code === '200') {
+        window.location.reload();
+      }
+    }
+  };
   return (
-    <form className="default-form job-apply-form">
+    <form
+      className="default-form job-apply-form"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <div className="row">
         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
           <div className="uploading-outer apply-cv-outer">
-            <div className="uploadButton">
+            {/* <div className="uploadButton">
               <input
                 className="uploadButton-input"
                 type="file"
@@ -22,7 +44,7 @@ const ApplyJobModalContent = () => {
               >
                 Upload CV (doc, docx, pdf)
               </label>
-            </div>
+            </div> */}
           </div>
         </div>
         {/* End .col */}
@@ -32,7 +54,6 @@ const ApplyJobModalContent = () => {
             className="darma"
             name="message"
             placeholder="Message"
-            required
           ></textarea>
         </div>
         {/* End .col */}
@@ -41,7 +62,7 @@ const ApplyJobModalContent = () => {
           <div className="input-group checkboxes square">
             <input type="checkbox" name="remember-me" id="rememberMe" />
             <label htmlFor="rememberMe" className="remember">
-              <span className="custom-checkbox"></span> You accept our{" "}
+              <span className="custom-checkbox"></span> You accept our{' '}
               <span data-bs-dismiss="modal">
                 <Link href="/terms">
                   Terms and Conditions and Privacy Policy
@@ -55,7 +76,8 @@ const ApplyJobModalContent = () => {
         <div className="col-lg-12 col-md-12 col-sm-12 form-group">
           <button
             className="theme-btn btn-style-one w-100"
-            type="submit"
+            //type="submit"
+            onClick={() => handleApply()}
             name="submit-form"
           >
             Apply Job

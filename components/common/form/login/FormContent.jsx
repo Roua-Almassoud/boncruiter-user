@@ -1,11 +1,14 @@
 'use client';
 import Link from 'next/link';
+import { Router } from 'next/router';
 //import LoginWithSocial from "./LoginWithSocial";
 import React, { useState } from 'react';
 import Api from '../../../../api/Api';
 import Utils from '../../../../components/utils/utils';
+import { useRouter } from 'next/navigation';
 
 const FormContent = () => {
+  const router = useRouter();
   const [alertError, setAlertError] = useState('');
   const [user, setUser] = useState({
     email: '',
@@ -64,7 +67,7 @@ const FormContent = () => {
         const userId = response.data?.data?.accessToken;
         localStorage.setItem('userId', userId);
         setAlertError('');
-        navigate('/profile');
+        router.push('/profile');
       } else {
         setLoading(false);
         setAlertError(
